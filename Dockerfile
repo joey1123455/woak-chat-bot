@@ -4,18 +4,11 @@ FROM rasa/rasa:latest-full
 # Set the working directory
 WORKDIR /app
 
-# Copy all necessary files
-COPY data ./data
-COPY config.yml ./
+# Copy the entire project directory into the Docker image
+COPY . .
 
 # Train the Rasa models
 RUN rasa train
-
-# Create the models directory
-RUN mkdir -p /app/models
-
-# Copy trained models
-COPY ./models ./models
 
 # Expose the Rasa server port
 EXPOSE 5005
