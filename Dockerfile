@@ -7,6 +7,9 @@ WORKDIR /app
 # Copy the entire project directory into the Docker image
 COPY . .
 
+# Adjust permissions of config.yml
+RUN chmod +w config.yml
+
 # Train the Rasa models
 RUN rasa train
 
