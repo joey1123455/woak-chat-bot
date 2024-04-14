@@ -1,24 +1,18 @@
-# Stage 1: Build Rasa models
-FROM rasa/rasa:latest-full as builder
+# Set the base image
+FROM rasa/rasa:latest-full
 
 # Set the working directory
 WORKDIR /app
 
-# Copy only the necessary files for training
+# Copy all necessary files
 COPY data ./data
 COPY config.yml ./
 
 # Train the Rasa models
 RUN rasa train
 
-# Stage 2: Runtime
-FROM rasa/rasa:latest
-
-# Set the working directory
-WORKDIR /app
-
-# Copy trained models from the builder stage
-COPY --from=builder /app/models ./models
+# Copy trained models
+COPY ./models ./models
 
 # Expose the Rasa server port
 EXPOSE 5005
