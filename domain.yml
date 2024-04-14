@@ -1,0 +1,253 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - ask_project
+  - ask_services
+  - contact
+  - FAQ
+  - ask_help
+  - say_feedback:
+      use_entities:
+      - feedback
+  - say_name:
+      use_entities:
+      - name
+  - say_email:
+      use_entities:
+      - email
+
+
+entities:
+- name
+- email
+- feedback
+
+
+slots:
+  name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: name
+      intent: say_name
+    influence_conversation: false
+  email:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: email
+      intent: say_email
+    influence_conversation: false
+  feedback:
+    type: text
+    mappings:
+      - type: from_text
+        conditions:
+          - active_loop: feedback_form
+            requested_slot: feedback
+    influence_conversation: false
+  time: 
+    type: text
+    mappings: 
+      - type: from_text
+        conditions:
+          - active_loop: consultation_booking
+            requested_slot: time
+  request: 
+    type: text
+    mappings: 
+      - type: from_text
+        conditions:
+          - active_loop: consultation_booking
+            requested_slot: request  
+    influence_conversation: false
+
+
+forms:
+  feedback_form:
+    required_slots:
+      - name
+      - email
+      - feedback
+  
+  consultation_booking:
+    required_slots:
+      - name
+      - email
+      - time
+      - request
+      
+
+
+responses:
+  utter_greet:
+  - text: "Hi my name is Keira, I'm here to help you with information about our services, projects, and answer any questions you may have."
+
+  utter_menu:
+  - text: "👋 Hello! How can I assist you today? Please choose from the following options:
+
+1️⃣ Type 'project' for Project Information. 
+2️⃣ Type 'service' for Service Details. 
+3️⃣ Type 'contact' for Contact Information. 
+4️⃣ Type 'FAQ' for Frequently Asked Questions. 
+Type the corresponding text to explore the desired functionality. If you need help at any time, just type 'help' or 'menu' to see these options again."
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_would_you_like_to_know_more:
+  - text: "Was that information helpful? Or would you like to consult with our team? You can also type 'help' or 'menu' to see these options again."
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_out_of_scope:
+  - text: Sorry, I'm not sure how to respond to that. Type "help" for assistance.
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_projects:
+  - text: "Certainly! Let me share information about our current and previous projects:
+    1. Maryland Public Health Laboratory
+      - Location: BALTIMORE, MARYLAND | UNITED STATES.
+      - Category: Healthcare.
+      - Completion Year: 2014.
+      - Details: Located in The Science + Technology Park on Johns Hopkins’ East Baltimore Campus, this building features open and closed laboratories, central accessioning areas, BSL-3 containment areas, an animal rabies lab, auditorium, offices, and training areas.
+      - Scope of Work: Interiors, New Construction.
+      - Client: State of Maryland Department of Health and Mental Hygiene.
+      - Size: 234,000 sq. ft., 8-Stories.
+      - Patners: HDR, Inc.
+      
+    2. Trinity University Dicke Hall
+      - Location: SAN ANTONIO, TEXAS | UNITED STATES.
+      - Category: Education.
+      - Completion Year: 2022
+      - Details: Dicke Hall, the first cross-laminated timber building in San Antonio, is the newest addition to Trinity University’s Business and Humanities District. This 40,000 sq. ft. mass timber structure now houses the district’s active learning classrooms, two-tier classrooms, an auditorium, and a screening room. Student breakout spaces with varying scales of interaction are distributed throughout the building and provide diverse experiences needed to meet student needs.
+      - Scope of Work: New Construction
+      - Client: Trinity University.
+      - Size: 40,000 sq. ft., 3-Stories
+      - Patners: Lake Flato
+      
+    3. Sage Realty, Lobby and Plaza Renovation
+      - Location: NEW YORK, NEW YORK | UNITED STATES.
+      - Category: Commercial.
+      - Completion Year: 2023.
+      - Details: Turner provided preconstruction and construction management services for the phased renovation of the existing plaza, lobby, elevator bank, and elevator cabs at 767 Third Avenue for Sage Realty. The project's goal was to modernize the structure while paying homage to its original architectural vision.
+    The centerpiece of the lobby involved replacing the small glass pieces on the facade with 19-foot-tall curved glass panels, with no intermediate mullions, that were manufactured and shipped from Germany. These panels, created with cutting-edge technology, create a unique, piano-shaped lobby area and usher in ample natural light to the space.
+    The team also completed a complete sidewalk and exterior plaza update and replacement.
+      - Scope of Work: Interiors, Demolition
+      - Client: Sage Realty.
+      - Size: 15,850 sq. ft.
+      - Patners: FxCollaborative.
+      
+    4. San Antonio International Airport Consolidated Rental Car Facility
+      - Location: SAN ANTONIO, TEXAS | UNITED STATES.
+      - Category: Aviation/Transportation.
+      - Completion Year: 2018.
+      - Details: The Consolidated Rental Car Facility at the San Antonio International Airport was completed over multiple phases, which included the demolition/rerouting of the central utility plant, site development and the building of a consolidated rental car facility. The design of the rental car facility was focused on a seamless customer and employee experience. The facility accommodates multiple rental car brands, customer counters, offices, customer support areas, ready/return areas and approximately 1,950 parking spaces.
+      - Scope of Work: New Construction.
+      - Client: City of San Antonio.
+      - Size: 1,906,000 sq. ft.
+      - Patners: Transystems Corp.
+      
+    5. CapitalOne Tech Incubator at the University of Maryland
+      - Location: COLLEGE PARK, MARYLAND | UNITED STATES.
+      - Category: Commercial.
+      - Completion Year: 2019.
+      - Details: This project for Capital One included the fit-out of 7,500 sq. ft. of new office space. The space featured an open, industrial concept with exposed ceilings and bare concrete features throughout.
+    The scope of work included the fitout of four huddle rooms, five small offices, an IDF room, conference room, and a small dining area. In addition to the IDF room, a new split unit as well as UPS had to be installed for the AV/Data equipment racks. The space is now used to aid in the recruitment of students from the University of Maryland.
+    Comprehensive preconstruction services were provided throughout design to accommodate owner budget and evolution of the program.
+      - Scope of Work: Interiors
+      - Client: Capital One Bank.
+      - Size: 7,500 sq. ft., 1-Stories.
+      - Patners: Gensler.
+      
+    6. Confidential Internet Retailer - Corporate Tenant Improvement (YYZ18)
+      - Location: TORONTO, ONTARIO | CANADA.
+      - Category: Commercial.
+      - Completion Year: 2022.
+      - Details: Turner provided construction management services for a confidential client's downtown office. Completed in 3 phases, the tenant improvements are a complete build-out of the office interiors across 8 floors. The new space includes a blend of single offices, open work areas, large conference rooms, AODA compliant washrooms and work cafes. The project started from a core & shell stage and included modification to existing RAF construction to match new wall layout, acoustic and feature exposed ceilings, carpet and tile flooring and custom millwork. The project had extensive coordination with vinyl graphics for wall decoration to designate work areas, give areas themes and utilize for wayfinding. Feature lighting with critical lead times were procured through “SourceBlue” – Turner’s in-house procurement department saving the client approximately 5% in lighting costs and guaranteeing delivery across international borders even through the COVID-19 pandemic.
+      - Scope of Work: Interiors.
+      - Client: Confidential
+      - Size: 291,520 sq. ft., 8-Stories.
+      - Patners: Gensler.
+    Please refer to our projects page on our website for more projects."
+
+  utter_services:
+  - text: "Here are some of the services we offer:
+    General Remodeling: General remodelers are probably one of the best ways to describe WoakConstruction From exterior to interior remodeling, all the way to structural changes. We do it all! We strive to provide our customers with the best carefully thought out designs, top shelf material, and up to date, cutting edge remarkable finishes. We take pride by being a one stop shop company that supply our customers with everything they need to help them make their dreams and visions brought into reality. We escort our customers right from the get-go and there for them through every step of the way. From the pre-construction stage we’re brainstorming together with our customers to find the most efficient and best use out of the existing space, continuing to the designing and planning stage, moving on to the material picking and getting all the necessary permits. Throughout the project and way after final completion is signed, our trusted and well experienced project managers are always there with you! You are never alone!
+    Kitchen Remodeling: Kitchen is one of the most important room in the house and as our friends in real estate love to say “Kitchens sell homes!”. That’s why kitchen remodeling has great importance and it’s the kind of project that requires careful thinking and preparation due to the value increase it brings to the property once it’s complete. WoakConstruction specializes in complete kitchen remodeling. From the first draft and all the way through the final inspection, we do it all. We supply the kitchen cabinets and countertops to provide our customers “A one stop shop” experience like no other. Our team of experts are ready to escort you right from the start, we’ll begin by designing the perfect layout to make the best use of your kitchen space and by giving our customers a complementary 3D design, we’ll continue with material selection, getting all the necessary permits and moving in into our favorite part, construction! So, kick back, relax, and let us do the rest, we got this!
+    Bathroom Remodeling: We are fully aware that construction and remodeling in general can be somewhat intimidating at first so in order to make this experience more enjoyable, consumer friendly and stress free, we took it upon ourselves to provide our customers with the best customer service experience possible, we start by escorting our customers from the designing stage, continuing by guiding them through the material choosing from our huge variety of high quality local vendors, and we even help by providing free deliveries, our commitment to our customers is always to go the extra mile to create a smooth bathroom remodel, furthermore, bathroom remodeling is one of our favorite projects here at WoakConstruction and as such, one that we excel at. One of the key elements to a successful bathroom remodel is to find all of the right materials in advance, and that’s where our trusted loyal vendors come into play. So no worries, you’re not alone, we got you covered!
+    Roofing: Re-Roof projects, are projects that usually are born out of necessity, whether you have a roof leak or maybe your roof is starting to show signs of weakness, then it’s probably the time to redo your roof, in order to prevent; Water damage, mold, insulation problems, drywall cracks and paint peeling. Re-Roof projects are essential in maintaining a healthy house. There are a few different roofing materials that are being used throughout our nation, when choosing roofing material for your house, there’s a few key factors to consider; appearance, longevity, cost, and structural issues. Here’s a few examples for roofing materials; Rolled Roofing, Built-Up Roofing (BUR), Membrane Roofing, Asphalt Composite Shingles, Standing Seam Metal Roofing, Metal Shingles/Shakes, Wood Shingle Shakes, Clay Tile, Concrete Tile, Slate Shingles, Synthetic (Rubber) Slate Tile and last but not least, Eco-friendly Green Roof In Stamford county, the most common roof types are the: Asphalt shingles roof and the clay & concrete tile (also known as tile roof) 
+    Pavers: If you’re looking to transform your front or back yard, and while you’re at that increase your property value, then pavers might be the best way to go. Pavers have a magnificent visual appeal to them that cement is just too dull to provide. Pavers have a certain charm that can make every house look way more classic, whether you’d like to update your; Fire Pits & Fire Features, patios, pool patios or driveway. There are a lot of great benefits that comes along with pavers, here’s a few good examples:
+      1. Peace and quiet for a long time, pavers are well known for their durability and a longer lifespan then other material.
+      2. Pavers are much better acquitted to handle Connecticut in general and Stamford in particular, frequent earthquakes.
+      3. One of the greatest advantages of pavers is that they are four times stronger than regular concrete.
+      4. Low maintenance – Pavers can sustain without much maintenance.
+      5. Pavers can offer us creativity, freedom and flexibility in designs.
+    Please checkout our services page on our website for more details.
+    "
+
+  #feedback form
+
+  utter_feedback_form_confirm:
+  - text: "We value your insights! Could you take a moment to share your feedback using our online form?"
+
+  utter_ask_feedback_form_name:
+  - text: "Please provide your name using the format 'my name is <first name> <last name>'."
+
+  utter_ask_feedback_form_email:
+  - text: "Please provide your email address using the format 'my email is examplemail@gmail.com'.."
+
+  utter_ask_feedback_form_feedback:
+  - text: "Please share your feedback with us."
+
+  utter_feedback_form_test:
+  - text: "name: {name}, email: {email}, feedback: {feedback}"
+
+  utter_feedback_form_sent:
+  - text: "Thank you for sharing your feedback! We'll review it and get back to you shortly."
+  - text: "Your feedback is much appreciated! We'll look into it and get back to you soon."
+
+  utter_thank_you:
+  - text: "Thank you for reaching out! We appreciate your inquiry."
+  - text: "Thanks for getting in touch! Your message is important to us."
+
+  utter_repeat:
+  - text: "Could you please rephrase your sentence."
+
+  utter_would_you_like_to_set_up_consultation:
+  - text: "Would you be interested in setting up a consultation to discuss your needs in more detail?"
+
+  utter_ask_consultation_booking_name:
+  - text: "Please provide your name using the format 'my name is <first name> <last name>'."
+
+  utter_ask_consultation_booking_email:
+  - text: "Please provide your email address using the format 'my email is examplemail@gmail.com'.."
+
+  utter_ask_consultation_booking_time:
+  - text: "Please provide your prefered time inbetween 9:00 am to 7:00 pm EST."
+
+  utter_ask_consultation_booking_request:
+  - text: "Please provide a brief description of the services you require"
+
+
+actions:
+  - action_feedback_form
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false

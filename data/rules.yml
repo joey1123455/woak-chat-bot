@@ -1,0 +1,82 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Respond with menu whenever user is stuck
+  steps:
+  - intent: ask_help
+  - action: utter_menu
+
+- rule: Proper greeting
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_menu
+
+- rule: ask_to_rephrase_whenever_confidence_is_low
+  steps:
+  - intent: nlu_fallback
+  - action: utter_repeat
+
+- rule: answer out of scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+# - rule: submit_income_form
+#   condition:
+#   - active_loop: feedback_form
+#   steps:
+#   - action: feedback_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_feedback_form_sent
+#   - action: action_feedback_form
+
+- rule: shw_help_menu
+  steps:
+  - intent: ask_help
+  - action: utter_menu
+
+- rule: shw_projects
+  steps:
+  - intent: ask_project
+  - action: utter_projects
+  - action: utter_would_you_like_to_know_more
+
+- rule: shw_services
+  steps:
+  - intent: ask_services
+  - action: utter_services
+  - action: utter_would_you_like_to_know_more
+
+- rule: say_goodbye
+  steps:
+  - action: utter_would_you_like_to_know_more
+  - intent: deny
+  - action: utter_thank_you
+
+- rule: feedback_form
+  steps:
+    - action: utter_feedback_form_confirm
+    - intent: affirm
+    - action: feedback_form
+    - active_loop: feedback_form
+    - action: feedback_form
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: utter_feedback_form_sent
+    - action: action_feedback_form
+

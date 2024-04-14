@@ -1,0 +1,334 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - indeed
+    - correct
+    - that sounds good
+    - yes
+    - yess please
+    - of course
+    - yup
+    - yeah
+    - yes please
+    - yes plz
+    - Sure
+    - Ok
+    - sweet
+    - cool,
+    - yes...
+    - y
+    - ok
+    - ye
+    - okay
+    - That would be great
+    - YES
+    - YUP
+    - Yea
+    - Yeah
+    - Yeah sure
+    - Yep
+    - Yep that's fine
+    - Yep!
+    - Yepp
+    - Yes
+    - Yes I do
+    - Yes please
+    - Yes please!
+    - Yes, I accept
+
+- intent: deny
+  examples: |
+    - not really
+    - no
+    - I don't think so
+    - never
+    - no way
+    - nope
+    - no thanks
+    - I dunno
+    - Nothing!
+    - nevermind
+    - n
+    - i decline
+    - i don not like this
+    - i don't think so
+    - i don't want either of those
+    - i don't want to
+    - i don't want to give you my email
+    - i dont want to
+    - i dont want to accept :P lol
+    - i guess it means - no
+    - i'm afraid not
+    - i'm not sure
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: ask_help
+  examples: |
+    - help me
+    - help
+    - I need help
+    - can you help me
+    - can you help
+    - help please
+    - help me please
+    - menu
+    - i am stuck
+    - what are we even doing 
+    - what am i even doing 
+    - oh lord
+    - you are pointless
+    - i feel dumb
+    - whats this
+    - stupid bot
+    - what else 
+    - need help
+    - huh
+    - hehn
+    - help
+    - what can you do?
+    - what can I ask you?
+    - what do you do?
+    - what can you help me with?
+    - help me
+    - help, what do you do
+    - how do I use this
+    - how can you help me
+    - What are the things that you can do?
+    - What else can you help me with?
+    - can you do anything else?
+    - can you help me?
+    - come back
+    - cool! can I do something else here?
+    - hello what can you do for me
+    - help
+    - help me
+    - help please
+    - help pls
+    - help?
+    - hep me
+
+- intent: ask_project
+  examples: |
+    - project
+    - what has the company worked on in the past?
+    - tell me about your recent projects
+    - can you provide information about your projects?
+    - what are the current construction projects?
+    - give me details about a project
+    - could you share some details about the ongoing projects?
+    - which projects is the company currently working on?
+    - what types of projects has the company completed?
+    - I'm interested in learning about the company's project history
+    - what are the names of the projects the company has undertaken?
+    - can you give me an overview of the projects you've completed?
+    - I'd like to know more about the projects the company has completed
+
+- intent: ask_services
+  examples: |
+    - services
+    - examples of your services
+    - what services do you provide
+    - what can your company do
+
+- intent: say_name
+  examples: |
+    - my name is [james brown](name)
+    - my name is [James Brown](name)
+    - I'm [John Doe](name)
+    - call me [Alice](name)
+    - you can refer to me as [Bob](name)
+    - I'm [Bob](name)
+    - [John Ajayi Conner](name)
+    - my name is [Alice Johnson](name)
+    - I go by the name [Chris Smith](name)
+    - people call me [Samantha](name)
+    - you can refer to me as [Michael Wong](name)
+    - [Emily Davis](name) is my name
+    - I'm known as [Alex Turner](name)
+    - call me [Ella Martinez](name)
+    - my name's [David Brown](name)
+    - I'm [Sophie Miller](name)
+    - you can call me [William Johnson](name)
+    - I go by [Olivia Smith](name)
+    - my friends call me [Daniel](name)
+    - refer to me as [Isabella Wilson](name)
+    - [Jacob Thompson](name) is my name
+    - you can call me [Ava Robinson](name)
+    - I'm [Liam Johnson](name)
+    - you can refer to me as [Emma Davis](name)
+    - call me [Noah Anderson](name)
+    - I'm known as [Mia Taylor](name)
+    - people call me [Ethan Williams](name)
+    - I go by the name [Grace Martin](name)
+    - my name is [Benjamin Wilson](name)
+    - you can call me [Charlotte Clark](name)
+
+- intent: say_email
+  examples: |
+    - my email is [john.doe@example.com](email)
+    - I can be reached at [jane.smith@emailprovider.com](email)
+    - you can email me at [samuel.jones@gmail.com](email)
+    - my contact email is [laura.miller@example.org](email)
+    - reach out to me at [alex.brown@emailcompany.com](email)
+    - email: [susan.williams@emailservice.net](email)
+    - contact me via [chris.jenkins@example.net](email)
+    - my email address is [maria.johnson@emaildomain.com](email)
+    - you can contact me at [david.clark@emailprovider.org](email)
+    - email me: [emily.morris@emailservice.com](email)
+    - reach me at [oliver.martin@example.net](email)
+    - I can be contacted at [ava.anderson@emailprovider.com](email)
+    - my email: [william.thomas@emailservice.net](email)
+    - contact: [sophia.roberts@example.org](email)
+    - email address: [daniel.white@emailcompany.com](email)
+    - you can reach me via [amelia.martinez@emailprovider.org](email)
+    - email me at [logan.davis@example.com](email)
+    - my email is [mia.martin@emailservice.com](email)
+    - contact me at [ethan.harris@example.net](email)
+    - email address: [olivia.hill@emailcompany.com](email)
+    - I can be contacted via [jacob.thompson@emailprovider.com](email)
+    - you can reach me at [lily.jackson@emailservice.net](email)
+    - my email address is [benjamin.brown@emailservice.com](email)
+    - contact me via [charlotte.miller@emailcompany.com](email)
+    - email: [noah.martin@emailservice.com](email)
+    - I can be contacted at [emma.miller@emailprovider.org](email)
+
+- intent: say_feedback
+  examples: |
+    - My feedback is that your customer service is excellent!
+    - I'd like to give positive feedback about the recent support I received.
+    - Here's some feedback: your website is user-friendly and easy to navigate.
+    - I want to provide feedback on the quality of your products.
+    - The response time from your team was impressive — great job!
+    - I have feedback regarding the billing process, could you look into it?
+    - Can I share my thoughts on the new feature you introduced?
+    - I'd like to express my dissatisfaction with the delivery service.
+    - Here is feedback about the recent purchase: the product exceeded my expectations.
+    - I have some constructive feedback to improve your website layout.
+    - The app crashes frequently, and I wanted to bring it to your attention.
+    - I want to provide feedback on the overall customer experience.
+    - Your team's responsiveness needs improvement — that's my feedback.
+    - I have positive feedback about the professionalism of your support team.
+    - My feedback is that your pricing is competitive and reasonable.
+    - I'd like to share feedback on the recent event; it was well-organized.
+    - Here's some feedback: the checkout process on your website needs improvement.
+    - Can I offer feedback on the user interface of your application?
+    - I have feedback about a bug I encountered in your software.
+    - My feedback is about the lack of variety in your product selection.
+    - Kudos on the outstanding customer service! You guys rock!
+    - I wanted to drop a line and say your team is doing an awesome job.
+    - Shoutout to your support team they were super helpful!
+    - I've got some feedback on the recent purchase the product quality is top-notch!
+    - Your website is a breeze to use; great job on the user interface!
+    - Quick thumbs up for the lightning-fast response from your crew!
+    - I'd like to give a shoutout for the fantastic experience I had with your product.
+    - The event you organized was killer! I've got nothing but positive feedback.
+    - Your pricing strategy is on point competitive and fair.
+    - I wanted to share my thoughts on the new feature rollout it's a game-changer!
+    - Your team's professionalism is off the charts much appreciated!
+    - I've got some feedback on the app it's crashing quite a bit lately.
+    - I wanted to bring up a billing issue I encountered recently need some assistance.
+    - Can I offer some suggestions for improving the checkout process on your site?
+    - The variety in your product selection is a bit lacking consider expanding it.
+    - The software is great, but there's a bug I stumbled upon needs fixing.
+    - I have some constructive feedback on the overall customer experience.
+    - Your team's responsiveness is excellent keep up the good work!
+    - Just a quick note to say your pricing is fair and reasonable.
+    - The professionalism of your support team deserves a shoutout very impressed!
+
+- intent: out_of_scope
+  examples: |
+    - what is the square root of 5
+    - I want to know the weather
+    - what is the meaning of life.
+    - Fridge Isn't Running
+    - my tv isn't working
+    - I want a pizza
+    - my washing machine isn't working
+    - what year is it
+    - order a pizza
+    - I want to order a pizza
+    - what is the weather today
+    - what is the weather
+    - what the weather today ?
+    - hows the weather
+    - tell me a joke
+    - Can I get a hamburger?
+    - Can YouTube talk?
+    - Can you call me back ?
+    - Can you give me your datacenter's password
+    - Can you give me your datacenter's password?
+    - Can you make sandwiches?
+    - Can you please send me an uber
+    - ofif fsdfafsfs
+

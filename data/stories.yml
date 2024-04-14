@@ -1,0 +1,62 @@
+version: "3.1"
+
+stories:
+
+# - story: service_details_path_and_feedback
+#   steps:
+#   - intent: ask_services
+#   - action: utter_services
+#   - action: utter_would_you_like_to_know_more
+#   - intent: deny
+#   - action: utter_would_you_like_to_set_up_consultation
+#   - intent: deny
+#   - action: utter_feedback_form_confirm
+#   - intent: affirm
+#   - action: feedback_form
+#   - active_loop: feedback_form
+#   - action: feedback_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_feedback_form_sent
+#   - action: action_feedback_form
+
+# - story: service_details_path_and_consultation
+#   steps:
+#   - intent: ask_services
+#   - action: utter_services
+#   - action: utter_would_you_like_to_know_more
+#   - intent: deny
+#   - action: utter_would_you_like_to_set_up_consultation
+#   - intent: affirm
+#   - action: consultation_booking
+#   - active_loop: consultation_booking
+#   - action: consultation_booking 
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+
+# - story: project_details_path_consultation_and_feedback
+#   steps:
+#   - intent: ask_project
+#   - action: utter_projects
+#   - action: utter_would_you_like_to_know_more
+#   - intent: deny
+#   - action: utter_would_you_like_to_set_up_consultation
+#   - intent: affirm
+#   - action: consultation_booking
+#   - active_loop: consultation_booking
+#   - action: consultation_booking 
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_feedback_form_confirm
+#   - intent: affirm
+#   - action: feedback_form
+#   - active_loop: feedback_form
+#   - action: feedback_form
+#   - active_loop: null
+#   - slot_was_set:
+#     - requested_slot: null
+#   - action: utter_feedback_form_sent
+#   - action: action_feedback_form
