@@ -30,7 +30,8 @@ jobs:
           docker push registry.heroku.com/chat-bot-woak/web
 
       - name: Release to Heroku
-        run: heroku container:release web -a $HEROKU_APP_NAME
+        run: |
+          heroku container:release web -a $HEROKU_APP_NAME
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_APP_NAME: your-heroku-app-name
+          HEROKU_APP_NAME: chat-bot-woak
