@@ -7,8 +7,14 @@ WORKDIR /app
 # Copy the entire project directory into the Docker image
 COPY . .
 
-# Train the Rasa models
+# Switch to root user
+USER root
+
+# Train the Rasa models with root permissions
 RUN rasa train
+
+# Switch back to the default non-root user
+USER 1001
 
 # Expose the Rasa server port
 EXPOSE 5005
