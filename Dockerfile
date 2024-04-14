@@ -11,6 +11,9 @@ COPY config.yml ./
 # Train the Rasa models
 RUN rasa train
 
+# Create the models directory
+RUN mkdir -p /app/models
+
 # Copy trained models
 COPY ./models ./models
 
